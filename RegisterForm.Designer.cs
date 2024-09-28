@@ -1,6 +1,6 @@
 ﻿namespace cinemaARM
 {
-    partial class RegisterFrom
+    partial class RegisterForm
     {
         /// <summary>
         /// Required designer variable.
@@ -172,14 +172,14 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 16F);
             label6.ForeColor = Color.OrangeRed;
-            label6.Location = new Point(196, 554);
+            label6.Location = new Point(143, 556);
             label6.Name = "label6";
             label6.Size = new Size(71, 30);
             label6.TabIndex = 15;
             label6.Text = "label6";
             label6.Visible = false;
             // 
-            // RegisterFrom
+            // RegisterForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -198,7 +198,7 @@
             Controls.Add(textBox3);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
-            Name = "RegisterFrom";
+            Name = "RegisterForm";
             Text = "Регистрация";
             ResumeLayout(false);
             PerformLayout();

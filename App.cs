@@ -25,6 +25,11 @@ namespace cinemaARM
                 this.Close();
             }*/
             _ruleLevel = 2;
+
+            if (_ruleLevel == 2)
+            {
+                button3.Visible = true;
+            }
             update();
         }
 
@@ -143,12 +148,19 @@ namespace cinemaARM
                     label11.Location = new Point(10, 220);
                     label11.AutoSize = true;
                     panel.Controls.Add(label11);
+
+                    panel.Click += (s, e) =>
+                    {
+                        var form = new AddServeForm(f.Name);
+                        form.ShowDialog();
+                        update();
+                    };
                 }
 
 
 
 
-                
+                panel.MaximumSize = new Size(800, 500);
                 flowLayoutPanel1.Controls.Add(panel);
             }
         }
@@ -159,6 +171,17 @@ namespace cinemaARM
             {
                 this.Close();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            update();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var regForm = new RegisterForm();
+            regForm.ShowDialog();
         }
     }
 }

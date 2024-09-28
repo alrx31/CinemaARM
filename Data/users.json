@@ -1,1 +1,10 @@
-[{"Id":1,"Name":"admin","Surname":"admin","IsAdmin":true,"Email":"","Login":"admin","Password":"?iv??A\u0004\u0015??\b?M?\u0015??g??s?K??\u001Fo*?H?\u0018"}]
+[
+    {
+        "Id": 1,
+        "Name": "admin",
+        "Surname": "admin",
+        "IsAdmin": true,
+        "Login": "admin",
+        "Password": "?iv??A\u0004\u0015??\b?M?\u0015??g??s?K??\u001Fo*?H?\u0018"
+    }
+]

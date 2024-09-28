@@ -3,11 +3,11 @@ using System.Text.Json;
 
 namespace cinemaARM
 {
-    public partial class RegisterFrom : Form
+    public partial class RegisterForm : Form
     {
 
 
-        public RegisterFrom()
+        public RegisterForm()
         {
             InitializeComponent();
         }
@@ -21,7 +21,15 @@ namespace cinemaARM
             var isAdmin = checkBox1.Checked;
             var ReapetPassword = textBox5.Text;
 
-            if(password != ReapetPassword)
+            if(name == "" || surname == "" || login == "" || password == "" || ReapetPassword == "")
+            {
+                label6.Text = "Заполните все поля";
+                label6.Visible = true;
+                return;
+            }
+
+
+            if (password != ReapetPassword)
             {
                 label6.Text = "Пароли не совпадают";
                 label6.Visible = true;

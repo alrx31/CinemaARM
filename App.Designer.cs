@@ -31,6 +31,7 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             button1 = new Button();
             button2 = new Button();
+            button3 = new Button();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -63,6 +64,19 @@
             button2.TabIndex = 2;
             button2.Text = "Обновить";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.Font = new Font("Segoe UI", 16F);
+            button3.Location = new Point(891, 430);
+            button3.Name = "button3";
+            button3.Size = new Size(200, 90);
+            button3.TabIndex = 3;
+            button3.Text = "Добавить пользователя";
+            button3.UseVisualStyleBackColor = true;
+            button3.Visible = false;
+            button3.Click += button3_Click;
             // 
             // App
             // 
@@ -70,6 +84,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1184, 611);
+            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(flowLayoutPanel1);
@@ -85,5 +100,6 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private Button button1;
         private Button button2;
+        private Button button3;
     }
 }
