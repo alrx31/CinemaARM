@@ -34,9 +34,22 @@
         "MinAge": 16,
         "Servos": [
             {
-                "Name": "\u041E\u043D\u043B\u0430\u0439\u043D",
-                "SeatNumber": 0
+                "Name": "1",
+                "SeatNumber": 1
             }
         ]
+    },
+    {
+        "Id": 3,
+        "Name": "test",
+        "Description": "test",
+        "Genre": "test",
+        "Director": "test",
+        "Country": "test",
+        "Year": 1999,
+        "Price": 510,
+        "Rating": 9.81,
+        "MinAge": 12,
+        "Servos": []
     }
 ]

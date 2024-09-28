@@ -1,6 +1,6 @@
 ﻿namespace cinemaARM
 {
-    partial class App
+    partial class EditFilmsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,8 +31,6 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             button1 = new Button();
             button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -43,7 +41,7 @@
             flowLayoutPanel1.Location = new Point(22, 23);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(850, 497);
-            flowLayoutPanel1.TabIndex = 0;
+            flowLayoutPanel1.TabIndex = 1;
             // 
             // button1
             // 
@@ -51,7 +49,7 @@
             button1.Location = new Point(891, 23);
             button1.Name = "button1";
             button1.Size = new Size(200, 50);
-            button1.TabIndex = 1;
+            button1.TabIndex = 2;
             button1.Text = "Выйти";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
@@ -59,53 +57,25 @@
             // button2
             // 
             button2.Font = new Font("Segoe UI", 16F);
-            button2.Location = new Point(891, 93);
+            button2.Location = new Point(891, 470);
             button2.Name = "button2";
             button2.Size = new Size(200, 50);
-            button2.TabIndex = 2;
-            button2.Text = "Обновить";
+            button2.TabIndex = 3;
+            button2.Text = "Добавить Фильм";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
-            // button3
-            // 
-            button3.Font = new Font("Segoe UI", 16F);
-            button3.Location = new Point(891, 430);
-            button3.Name = "button3";
-            button3.Size = new Size(200, 90);
-            button3.TabIndex = 3;
-            button3.Text = "Добавить пользователя";
-            button3.UseVisualStyleBackColor = true;
-            button3.Visible = false;
-            button3.Click += button3_Click;
-            // 
-            // button4
-            // 
-            button4.Font = new Font("Segoe UI", 16F);
-            button4.Location = new Point(891, 323);
-            button4.Name = "button4";
-            button4.Size = new Size(200, 90);
-            button4.TabIndex = 4;
-            button4.Text = "Редактировать фильмы";
-            button4.UseVisualStyleBackColor = true;
-            button4.Visible = false;
-            button4.Click += button4_Click;
-            // 
-            // App
+            // EditFilmsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1184, 611);
-            Controls.Add(button4);
-            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(flowLayoutPanel1);
-            Name = "App";
-            Text = "App";
-            Load += App_Load;
-            KeyDown += App_KeyDown;
+            Name = "EditFilmsForm";
+            Text = "EditFilms";
             ResumeLayout(false);
         }
 
@@ -114,7 +84,5 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private Button button1;
         private Button button2;
-        private Button button3;
-        private Button button4;
     }
 }

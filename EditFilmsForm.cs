@@ -1,42 +1,14 @@
 ﻿using cinemaARM.Models;
 using System.Text.Json;
-using System.Text.Json.Nodes;
 
 namespace cinemaARM
 {
-    public partial class App : Form
+    public partial class EditFilmsForm : Form
     {
-        private int _ruleLevel;
-        private Person person;
-
-        public App()
+        public EditFilmsForm()
         {
             InitializeComponent();
-            this.KeyPreview = true;
-            this.Text = ENV.CinimaName;
-        }
-
-        private void App_Load(object sender, EventArgs e)
-        {
-            var loginForm = new LoginForm(ref _ruleLevel);
-            /*loginForm.Login(ref _ruleLevel, ref person);
-            if (_ruleLevel == 0)
-            {
-                this.Close();
-            }*/
-            _ruleLevel = 2;
-
-            if (_ruleLevel == 2)
-            {
-                button3.Visible = true;
-                button4.Visible = true;
-            }
             update();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         public void update()
@@ -166,41 +138,18 @@ namespace cinemaARM
             }
         }
 
-        private void App_KeyDown(object sender, KeyEventArgs e)
+
+
+        private void button1_Click(object sender, EventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.W)
-            {
-                this.Close();
-            }
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            var addFilmForm = new AddFilmForm();
+            addFilmForm.ShowDialog();
             update();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if(_ruleLevel != 2)
-            {
-                MessageBox.Show("У вас нет прав на это действие");
-                return;
-            }
-
-            var regForm = new RegisterForm();
-            regForm.ShowDialog();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if(_ruleLevel != 2)
-            {
-                MessageBox.Show("У вас нет прав на это действие");
-                return;
-            }
-
-            var editFilms = new EditFilmsForm();
-            editFilms.ShowDialog();
         }
     }
 }

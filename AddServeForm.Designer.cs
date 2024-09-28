@@ -70,7 +70,7 @@
             label3.AutoEllipsis = true;
             label3.Font = new Font("Segoe UI", 16F);
             label3.ForeColor = Color.OrangeRed;
-            label3.Location = new Point(52, 264);
+            label3.Location = new Point(39, 332);
             label3.MaximumSize = new Size(400, 0);
             label3.MinimumSize = new Size(400, 100);
             label3.Name = "label3";
@@ -91,7 +91,7 @@
             // button1
             // 
             button1.Font = new Font("Segoe UI", 16F);
-            button1.Location = new Point(12, 384);
+            button1.Location = new Point(12, 457);
             button1.Name = "button1";
             button1.Size = new Size(200, 50);
             button1.TabIndex = 6;
@@ -102,7 +102,7 @@
             // button2
             // 
             button2.Font = new Font("Segoe UI", 16F);
-            button2.Location = new Point(252, 384);
+            button2.Location = new Point(252, 457);
             button2.Name = "button2";
             button2.Size = new Size(200, 50);
             button2.TabIndex = 7;
@@ -114,7 +114,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(488, 463);
+            ClientSize = new Size(488, 519);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(textBox2);
@@ -123,7 +123,7 @@
             Controls.Add(label1);
             Controls.Add(textBox1);
             Name = "AddServeForm";
-            Text = "AddServeForm";
+            Text = "Забронировать место";
             ResumeLayout(false);
             PerformLayout();
         }
