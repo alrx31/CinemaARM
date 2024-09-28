@@ -1,0 +1,46 @@
+[
+    {
+        "Id": 1,
+        "Name": "В поисках потерянного времени",
+        "Description": "Эпопея о жизни и времени.",
+        "Genre": "Фантастика",
+        "Director": "Лев Толстой",
+        "Country": "Россия",
+        "Year": 2022,
+        "Price": 450.00,
+        "Rating": 9.0,
+        "MinAge": 12,
+        "Servos": [
+            {
+                "Name": "Кинотеатр",
+                "SeatNumber": 10
+            },
+            {
+                "Name": "Стриминг",
+                "SeatNumber": 0
+            }
+        ]
+    },
+    {
+        "Id": 2,
+        "Name": "Свет в окне",
+        "Description": "История о любви и надежде.",
+        "Genre": "Драма",
+        "Director": "Анна Ахматова",
+        "Country": "Россия",
+        "Year": 2021,
+        "Price": 350.00,
+        "Rating": 8.5,
+        "MinAge": 16,
+        "Servos": [
+            {
+                "Name": "Кинотеатр",
+                "SeatNumber": 5
+            },
+            {
+                "Name": "Онлайн",
+                "SeatNumber": 0
+            }
+        ]
+    }
+]

@@ -3,7 +3,7 @@
     public class ENV
     {
         public static string CinimaName = "Октябрьский Кинотеатр";
-        public static int CountSeatsInCinema = 100;
+        public static int CountSeatsInCinema = 2;
         public static int FilmPrice = 10;
         public static string DataFolder = "./../../../Data/";
 

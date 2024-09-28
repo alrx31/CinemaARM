@@ -22,8 +22,7 @@ namespace cinemaARM
                 Surname = "admin",
                 IsAdmin = true,
                 Login = ENV.AdminLogin,
-                Password = ENV.getHash(ENV.AdminPassword),
-                Email = ""
+                Password = ENV.getHash(ENV.AdminPassword)
             };
 
             
