@@ -18,13 +18,13 @@ namespace cinemaARM
 
         private void App_Load(object sender, EventArgs e)
         {
-            var loginForm = new LoginForm(ref _ruleLevel);
-            /*loginForm.Login(ref _ruleLevel, ref person);
+            var loginForm = new LoginForm(ref _ruleLevel,ref person);
+            loginForm.Login(ref _ruleLevel, ref person);
+
             if (_ruleLevel == 0)
             {
                 this.Close();
-            }*/
-            _ruleLevel = 2;
+            }
 
             if (_ruleLevel == 2)
             {
@@ -181,14 +181,16 @@ namespace cinemaARM
 
         private void button3_Click(object sender, EventArgs e)
         {
+
+
             if(_ruleLevel != 2)
             {
                 MessageBox.Show("У вас нет прав на это действие");
                 return;
             }
 
-            var regForm = new RegisterForm();
-            regForm.ShowDialog();
+            var editUserForm = new EditUsersForm(person.Login);
+            editUserForm.ShowDialog();
         }
 
         private void button4_Click(object sender, EventArgs e)

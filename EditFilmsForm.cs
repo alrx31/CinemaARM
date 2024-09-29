@@ -122,13 +122,15 @@ namespace cinemaARM
                     label11.AutoSize = true;
                     panel.Controls.Add(label11);
 
-                    panel.Click += (s, e) =>
-                    {
-                        var form = new AddServeForm(f.Name);
-                        form.ShowDialog();
-                        update();
-                    };
+                    
                 }
+
+                panel.Click += (s, e) =>
+                {
+                    var form = new ChangeFilmForm(f.Name);
+                    form.ShowDialog();
+                    update();
+                };
 
 
 

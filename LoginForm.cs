@@ -6,18 +6,20 @@ namespace cinemaARM
     public partial class LoginForm : Form
     {
         private int _ruleLevel;
+        private Person _person;
 
-        public LoginForm(ref int ruleLevel)
+        public LoginForm(ref int ruleLevel,ref Person person)
         {
             InitializeComponent();
             _ruleLevel = ruleLevel;
+            _person = person;
         }
 
         public void Login(ref int ruleLevel, ref Person person)
         {
             this.ShowDialog();
             ruleLevel = _ruleLevel;
-            
+            person = _person;
         }
 
         public void Login_event(object sender, EventArgs e)
@@ -62,6 +64,8 @@ namespace cinemaARM
                     _ruleLevel = 1;
                 }
                 
+                _person = user;
+
                 this.Close();
             }
             else
