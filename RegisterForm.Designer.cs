@@ -46,49 +46,49 @@
             // 
             // textBox1
             // 
-            textBox1.Font = new Font("Segoe UI", 24F);
+            textBox1.Font = new Font("Segoe UI", 16F);
             textBox1.Location = new Point(143, 61);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(200, 50);
+            textBox1.Size = new Size(200, 36);
             textBox1.TabIndex = 1;
             // 
             // textBox2
             // 
-            textBox2.Font = new Font("Segoe UI", 24F);
+            textBox2.Font = new Font("Segoe UI", 16F);
             textBox2.Location = new Point(143, 152);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(200, 50);
+            textBox2.Size = new Size(200, 36);
             textBox2.TabIndex = 2;
             // 
             // textBox3
             // 
-            textBox3.Font = new Font("Segoe UI", 24F);
+            textBox3.Font = new Font("Segoe UI", 16F);
             textBox3.Location = new Point(143, 242);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(200, 50);
+            textBox3.Size = new Size(200, 36);
             textBox3.TabIndex = 3;
             // 
             // textBox4
             // 
-            textBox4.Font = new Font("Segoe UI", 24F);
+            textBox4.Font = new Font("Segoe UI", 16F);
             textBox4.Location = new Point(143, 390);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(200, 50);
+            textBox4.Size = new Size(200, 36);
             textBox4.TabIndex = 5;
             // 
             // textBox5
             // 
-            textBox5.Font = new Font("Segoe UI", 24F);
+            textBox5.Font = new Font("Segoe UI", 16F);
             textBox5.Location = new Point(143, 481);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(200, 50);
+            textBox5.Size = new Size(200, 36);
             textBox5.TabIndex = 6;
             // 
             // checkBox1
             // 
             checkBox1.AutoSize = true;
             checkBox1.Font = new Font("Segoe UI", 16F);
-            checkBox1.Location = new Point(178, 308);
+            checkBox1.Location = new Point(147, 308);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(109, 34);
             checkBox1.TabIndex = 7;
@@ -121,7 +121,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14F);
-            label1.Location = new Point(211, 33);
+            label1.Location = new Point(143, 33);
             label1.Name = "label1";
             label1.Size = new Size(49, 25);
             label1.TabIndex = 10;
@@ -131,7 +131,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14F);
-            label2.Location = new Point(211, 124);
+            label2.Location = new Point(143, 124);
             label2.Name = "label2";
             label2.Size = new Size(91, 25);
             label2.TabIndex = 11;
@@ -141,7 +141,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 14F);
-            label3.Location = new Point(211, 214);
+            label3.Location = new Point(143, 214);
             label3.Name = "label3";
             label3.Size = new Size(65, 25);
             label3.TabIndex = 12;
@@ -151,7 +151,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 14F);
-            label4.Location = new Point(211, 362);
+            label4.Location = new Point(147, 362);
             label4.Name = "label4";
             label4.Size = new Size(78, 25);
             label4.TabIndex = 13;
@@ -161,7 +161,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 14F);
-            label5.Location = new Point(160, 453);
+            label5.Location = new Point(147, 453);
             label5.Name = "label5";
             label5.Size = new Size(174, 25);
             label5.TabIndex = 14;
@@ -183,6 +183,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(501, 701);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -198,6 +199,7 @@
             Controls.Add(textBox3);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "RegisterForm";
             Text = "Регистрация";
             ResumeLayout(false);

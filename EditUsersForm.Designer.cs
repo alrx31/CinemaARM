@@ -87,6 +87,7 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(flowLayoutPanel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "EditUsersForm";
             Text = "Редактировать пользователей";
             Load += EditUsersForm_Load;

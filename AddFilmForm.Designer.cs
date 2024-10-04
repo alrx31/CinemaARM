@@ -252,6 +252,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(762, 736);
             Controls.Add(label10);
             Controls.Add(button2);
@@ -274,8 +276,9 @@
             Controls.Add(textBox3);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "AddFilmForm";
-            Text = "AddFilmForm";
+            Text = "Добавить фильм";
             ResumeLayout(false);
             PerformLayout();
         }

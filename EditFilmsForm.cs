@@ -122,7 +122,7 @@ namespace cinemaARM
                     label11.AutoSize = true;
                     panel.Controls.Add(label11);
 
-                    
+
                 }
 
                 panel.Click += (s, e) =>
@@ -151,6 +151,11 @@ namespace cinemaARM
         {
             var addFilmForm = new AddFilmForm();
             addFilmForm.ShowDialog();
+            update();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
             update();
         }
     }

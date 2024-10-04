@@ -39,7 +39,7 @@
             // textBox1
             // 
             textBox1.Font = new Font("Segoe UI", 16F);
-            textBox1.Location = new Point(176, 143);
+            textBox1.Location = new Point(176, 130);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(200, 36);
             textBox1.TabIndex = 0;
@@ -55,7 +55,8 @@
             // 
             // button1
             // 
-            button1.Location = new Point(176, 300);
+            button1.Font = new Font("Segoe UI", 16F);
+            button1.Location = new Point(176, 306);
             button1.Name = "button1";
             button1.Size = new Size(200, 50);
             button1.TabIndex = 2;
@@ -66,18 +67,20 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(184, 125);
+            label1.Font = new Font("Segoe UI", 16F);
+            label1.Location = new Point(176, 97);
             label1.Name = "label1";
-            label1.Size = new Size(41, 15);
+            label1.Size = new Size(75, 30);
             label1.TabIndex = 4;
             label1.Text = "Логин";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(177, 204);
+            label2.Font = new Font("Segoe UI", 16F);
+            label2.Location = new Point(176, 189);
             label2.Name = "label2";
-            label2.Size = new Size(49, 15);
+            label2.Size = new Size(89, 30);
             label2.TabIndex = 5;
             label2.Text = "Пароль";
             // 
@@ -97,6 +100,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(584, 561);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -104,6 +108,7 @@
             Controls.Add(button1);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "LoginForm";
             Text = "Авторизация";
             ResumeLayout(false);

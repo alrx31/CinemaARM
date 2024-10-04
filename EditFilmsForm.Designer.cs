@@ -31,6 +31,7 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             button1 = new Button();
             button2 = new Button();
+            button3 = new Button();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -65,17 +66,30 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // button3
+            // 
+            button3.Font = new Font("Segoe UI", 16F);
+            button3.Location = new Point(891, 94);
+            button3.Name = "button3";
+            button3.Size = new Size(200, 50);
+            button3.TabIndex = 4;
+            button3.Text = "Обновить";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // EditFilmsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1184, 611);
+            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(flowLayoutPanel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "EditFilmsForm";
-            Text = "EditFilms";
+            Text = "Редактировать фильмы";
             ResumeLayout(false);
         }
 
@@ -84,5 +98,6 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private Button button1;
         private Button button2;
+        private Button button3;
     }
 }

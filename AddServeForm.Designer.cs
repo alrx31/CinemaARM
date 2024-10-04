@@ -39,10 +39,10 @@
             // 
             // textBox1
             // 
-            textBox1.Font = new Font("Segoe UI", 24F);
+            textBox1.Font = new Font("Segoe UI", 16F);
             textBox1.Location = new Point(106, 80);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(200, 50);
+            textBox1.Size = new Size(200, 36);
             textBox1.TabIndex = 0;
             // 
             // label1
@@ -82,10 +82,10 @@
             // 
             // textBox2
             // 
-            textBox2.Font = new Font("Segoe UI", 24F);
+            textBox2.Font = new Font("Segoe UI", 16F);
             textBox2.Location = new Point(112, 185);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(200, 50);
+            textBox2.Size = new Size(200, 36);
             textBox2.TabIndex = 5;
             // 
             // button1
@@ -114,6 +114,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(488, 519);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -122,6 +123,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(textBox1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "AddServeForm";
             Text = "Забронировать место";
             ResumeLayout(false);

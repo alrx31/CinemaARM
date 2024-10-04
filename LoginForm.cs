@@ -8,7 +8,7 @@ namespace cinemaARM
         private int _ruleLevel;
         private Person _person;
 
-        public LoginForm(ref int ruleLevel,ref Person person)
+        public LoginForm(ref int ruleLevel, ref Person person)
         {
             InitializeComponent();
             _ruleLevel = ruleLevel;
@@ -27,7 +27,7 @@ namespace cinemaARM
             string login = textBox1.Text;
             string password = textBox2.Text;
 
-            if(String.IsNullOrEmpty(login) || String.IsNullOrEmpty(password))
+            if (String.IsNullOrEmpty(login) || String.IsNullOrEmpty(password))
             {
                 label3.Text = "Заполните все поля";
                 label3.Visible = true;
@@ -42,7 +42,7 @@ namespace cinemaARM
                 json = File.ReadAllText(ENV.DataFolder + "users.json");
             }
             catch (Exception ex)
-            { 
+            {
                 label3.Text = "Ошибка чтения файла";
                 label3.Visible = true;
                 return;
@@ -53,7 +53,7 @@ namespace cinemaARM
 
             var user = users.FirstOrDefault(x => x.Login == login && x.Password == password);
 
-            if(user != null)
+            if (user != null)
             {
                 if (user.IsAdmin)
                 {
@@ -63,7 +63,7 @@ namespace cinemaARM
                 {
                     _ruleLevel = 1;
                 }
-                
+
                 _person = user;
 
                 this.Close();

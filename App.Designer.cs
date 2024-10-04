@@ -102,6 +102,7 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(flowLayoutPanel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "App";
             Text = "App";
             Load += App_Load;

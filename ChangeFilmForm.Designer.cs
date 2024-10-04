@@ -70,12 +70,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(501, 539);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "ChangeFilmForm";
-            Text = "ChangeFilmForm";
+            Text = "Редактировать фильм";
             ResumeLayout(false);
         }
 
