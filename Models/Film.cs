@@ -13,6 +13,8 @@
         public decimal Price { get; set; }
         public decimal Rating { get; set; }
         public int MinAge { get; set; }
+        public DateTime ShowDate { get; set; }
+
 
         public List<ServeModel> Servos { get; set; }
 

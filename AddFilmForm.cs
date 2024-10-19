@@ -22,6 +22,7 @@ namespace cinemaARM
             var genre = textBox3.Text;
             var director = textBox4.Text;
             var country = textBox5.Text;
+            var showDate = dateTimePicker1.Value;
 
             int year;
             decimal price;
@@ -34,21 +35,22 @@ namespace cinemaARM
                 price = decimal.Parse(textBox7.Text);
                 rating = decimal.Parse(textBox8.Text);
                 minAge = int.Parse(textBox9.Text);
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 label10.Text = "Ошибка ввода числовых данных";
                 label10.Visible = true;
                 return;
             }
 
-            if(name == "" || description == "" || genre == "" || director == "" || country == "")
+            if (name == "" || description == "" || genre == "" || director == "" || country == "")
             {
                 label10.Text = "Не все поля заполнены";
                 label10.Visible = true;
                 return;
             }
 
-            if(year < 1900 || year > 2025)
+            if (year < 1900 || year > 2025)
             {
                 label10.Text = "Год должен быть в диапазоне от 1900 до 2025";
                 label10.Visible = true;
@@ -76,6 +78,12 @@ namespace cinemaARM
                 return;
             }
 
+            if(showDate < DateTime.UtcNow)
+            {
+                label10.Text = "Неверное время показа";
+                label10.Visible = true;
+            }
+
             var json = File.ReadAllText(ENV.DataFolder + "films.json");
             var films = JsonSerializer.Deserialize<List<Film>>(json);
 
@@ -91,7 +99,8 @@ namespace cinemaARM
                 Price = price,
                 Rating = rating,
                 MinAge = minAge,
-                Servos = new List<ServeModel>()
+                Servos = new List<ServeModel>(),
+                ShowDate = showDate
             };
 
             films.Add(film);

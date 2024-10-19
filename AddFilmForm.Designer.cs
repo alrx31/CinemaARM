@@ -49,6 +49,8 @@
             button1 = new Button();
             button2 = new Button();
             label10 = new Label();
+            dateTimePicker1 = new DateTimePicker();
+            label11 = new Label();
             SuspendLayout();
             // 
             // textBox1
@@ -71,7 +73,7 @@
             // textBox3
             // 
             textBox3.Font = new Font("Segoe UI", 16F);
-            textBox3.Location = new Point(114, 366);
+            textBox3.Location = new Point(114, 410);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(200, 36);
             textBox3.TabIndex = 2;
@@ -87,7 +89,7 @@
             // textBox5
             // 
             textBox5.Font = new Font("Segoe UI", 16F);
-            textBox5.Location = new Point(114, 450);
+            textBox5.Location = new Point(114, 494);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(200, 36);
             textBox5.TabIndex = 4;
@@ -103,7 +105,7 @@
             // textBox7
             // 
             textBox7.Font = new Font("Segoe UI", 16F);
-            textBox7.Location = new Point(397, 241);
+            textBox7.Location = new Point(397, 238);
             textBox7.Name = "textBox7";
             textBox7.Size = new Size(200, 36);
             textBox7.TabIndex = 6;
@@ -111,7 +113,7 @@
             // textBox8
             // 
             textBox8.Font = new Font("Segoe UI", 16F);
-            textBox8.Location = new Point(397, 366);
+            textBox8.Location = new Point(397, 410);
             textBox8.Name = "textBox8";
             textBox8.Size = new Size(200, 36);
             textBox8.TabIndex = 7;
@@ -119,7 +121,7 @@
             // textBox9
             // 
             textBox9.Font = new Font("Segoe UI", 16F);
-            textBox9.Location = new Point(397, 450);
+            textBox9.Location = new Point(397, 494);
             textBox9.Name = "textBox9";
             textBox9.Size = new Size(200, 36);
             textBox9.TabIndex = 8;
@@ -148,7 +150,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 16F);
-            label3.Location = new Point(114, 338);
+            label3.Location = new Point(114, 382);
             label3.Name = "label3";
             label3.Size = new Size(69, 30);
             label3.TabIndex = 12;
@@ -168,7 +170,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 16F);
-            label5.Location = new Point(114, 417);
+            label5.Location = new Point(114, 461);
             label5.Name = "label5";
             label5.Size = new Size(84, 30);
             label5.TabIndex = 14;
@@ -188,7 +190,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 16F);
-            label7.Location = new Point(397, 208);
+            label7.Location = new Point(397, 205);
             label7.Name = "label7";
             label7.Size = new Size(65, 30);
             label7.TabIndex = 16;
@@ -198,7 +200,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 16F);
-            label8.Location = new Point(397, 333);
+            label8.Location = new Point(397, 377);
             label8.Name = "label8";
             label8.Size = new Size(93, 30);
             label8.TabIndex = 17;
@@ -208,7 +210,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 16F);
-            label9.Location = new Point(397, 417);
+            label9.Location = new Point(397, 461);
             label9.Name = "label9";
             label9.Size = new Size(248, 30);
             label9.TabIndex = 18;
@@ -241,12 +243,31 @@
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 16F);
             label10.ForeColor = Color.OrangeRed;
-            label10.Location = new Point(114, 513);
+            label10.Location = new Point(114, 558);
             label10.Name = "label10";
             label10.Size = new Size(248, 30);
             label10.TabIndex = 21;
             label10.Text = "Минимальный Возраст";
             label10.Visible = false;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.CustomFormat = "dd.MM.yyyy HH.mm";
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.Location = new Point(397, 330);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(200, 23);
+            dateTimePicker1.TabIndex = 22;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 16F);
+            label11.Location = new Point(397, 288);
+            label11.Name = "label11";
+            label11.Size = new Size(152, 30);
+            label11.TabIndex = 23;
+            label11.Text = "Время показа";
             // 
             // AddFilmForm
             // 
@@ -255,6 +276,8 @@
             AutoSize = true;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(762, 736);
+            Controls.Add(label11);
+            Controls.Add(dateTimePicker1);
             Controls.Add(label10);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -306,5 +329,7 @@
         private Button button1;
         private Button button2;
         private Label label10;
+        private DateTimePicker dateTimePicker1;
+        private Label label11;
     }
 }
