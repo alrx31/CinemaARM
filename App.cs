@@ -9,6 +9,10 @@ namespace cinemaARM
         private int _ruleLevel;
         private Person person;
 
+        private bool isPriceSort = false;
+        private bool isRatingSort = false;
+        private List<Film> films;
+
         public App()
         {
             InitializeComponent();
@@ -42,8 +46,8 @@ namespace cinemaARM
         public void update()
         {
             var films = getAllMovies();
-
-            initialFilms(films);
+            this.films = films;
+            initialFilms();
         }
 
 
@@ -58,7 +62,7 @@ namespace cinemaARM
         }
 
 
-        public void initialFilms(List<Film> films)
+        public void initialFilms()
         {
             flowLayoutPanel1.Controls.Clear();
 
@@ -216,6 +220,13 @@ namespace cinemaARM
 
             var editFilms = new EditFilmsForm();
             editFilms.ShowDialog();
+        }
+
+        private List<Film> SortByPrice(List<Film> films)
+        {
+            var res = new List<Film>();
+
+            return res;
         }
     }
 }
