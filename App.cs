@@ -222,26 +222,22 @@ namespace cinemaARM
             editFilms.ShowDialog();
         }
 
-        private List<Film> SortByPrice(List<Film> films)
+        private List<Film> SortByPriceDESC(List<Film> films)
         {
             var filmsArray = films.ToArray();
-            var left = 0;
-            var right = filmsArray.Length - 1;
-            while (left < right)
+
+            for (var i = 1; i < filmsArray.Length; i++)
             {
-                var min = left;
-                for (var i = left + 1; i <= right; i++)
+                var currentFilm = filmsArray[i];
+                var j = i - 1;
+
+                while (j >= 0 && filmsArray[j].Price > currentFilm.Price)
                 {
-                    if (filmsArray[i].Price < filmsArray[min].Price)
-                    {
-                        min = i;
-                    }
+                    filmsArray[j + 1] = filmsArray[j];
+                    j--;
                 }
 
-                var temp = filmsArray[min];
-                filmsArray[min] = filmsArray[left];
-                filmsArray[left] = temp;
-                left++;
+                filmsArray[j + 1] = currentFilm;
             }
 
             return filmsArray.ToList();
@@ -250,27 +246,24 @@ namespace cinemaARM
         private List<Film> SortByPriceDESC(List<Film> films)
         {
             var filmsArray = films.ToArray();
-            var left = 0;
-            var right = filmsArray.Length - 1;
-            while (left < right)
+
+            for (var i = 1; i < filmsArray.Length; i++)
             {
-                var min = left;
-                for (var i = left + 1; i <= right; i++)
+                var currentFilm = filmsArray[i];
+                var j = i - 1;
+
+                while (j >= 0 && filmsArray[j].Price < currentFilm.Price)
                 {
-                    if (filmsArray[i].Price > filmsArray[min].Price)
-                    {
-                        min = i;
-                    }
+                    filmsArray[j + 1] = filmsArray[j];
+                    j--;
                 }
 
-                var temp = filmsArray[min];
-                filmsArray[min] = filmsArray[left];
-                filmsArray[left] = temp;
-                left++;
+                filmsArray[j + 1] = currentFilm;
             }
 
             return filmsArray.ToList();
         }
+
 
         private void button5_Click(object sender, EventArgs e)
         {
