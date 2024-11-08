@@ -22,7 +22,7 @@ namespace cinemaARM
 
         private void App_Load(object sender, EventArgs e)
         {
-            var loginForm = new LoginForm(ref _ruleLevel,ref person);
+            var loginForm = new LoginForm(ref _ruleLevel, ref person);
             loginForm.Login(ref _ruleLevel, ref person);
 
             if (_ruleLevel == 0)
@@ -78,7 +78,7 @@ namespace cinemaARM
                 panel.MinimumSize = new Size(800, 300);
 
                 var innerFlowPanel = new FlowLayoutPanel();
-                innerFlowPanel.FlowDirection = FlowDirection.TopDown;  
+                innerFlowPanel.FlowDirection = FlowDirection.TopDown;
                 innerFlowPanel.AutoSize = true;
                 innerFlowPanel.WrapContents = false;
                 innerFlowPanel.MaximumSize = new Size(780, 0);
@@ -200,7 +200,7 @@ namespace cinemaARM
         {
 
 
-            if(_ruleLevel != 2)
+            if (_ruleLevel != 2)
             {
                 MessageBox.Show("У вас нет прав на это действие");
                 return;
@@ -212,7 +212,7 @@ namespace cinemaARM
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if(_ruleLevel != 2)
+            if (_ruleLevel != 2)
             {
                 MessageBox.Show("У вас нет прав на это действие");
                 return;
@@ -224,9 +224,132 @@ namespace cinemaARM
 
         private List<Film> SortByPrice(List<Film> films)
         {
-            var res = new List<Film>();
+            var filmsArray = films.ToArray();
+            var left = 0;
+            var right = filmsArray.Length - 1;
+            while (left < right)
+            {
+                var min = left;
+                for (var i = left + 1; i <= right; i++)
+                {
+                    if (filmsArray[i].Price < filmsArray[min].Price)
+                    {
+                        min = i;
+                    }
+                }
 
-            return res;
+                var temp = filmsArray[min];
+                filmsArray[min] = filmsArray[left];
+                filmsArray[left] = temp;
+                left++;
+            }
+
+            return filmsArray.ToList();
+        }
+
+        private List<Film> SortByPriceDESC(List<Film> films)
+        {
+            var filmsArray = films.ToArray();
+            var left = 0;
+            var right = filmsArray.Length - 1;
+            while (left < right)
+            {
+                var min = left;
+                for (var i = left + 1; i <= right; i++)
+                {
+                    if (filmsArray[i].Price > filmsArray[min].Price)
+                    {
+                        min = i;
+                    }
+                }
+
+                var temp = filmsArray[min];
+                filmsArray[min] = filmsArray[left];
+                filmsArray[left] = temp;
+                left++;
+            }
+
+            return filmsArray.ToList();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (isPriceSort)
+            {
+                this.films = SortByPrice(this.films);
+            }
+            else
+            {
+                this.films = SortByPriceDESC(this.films);
+            }
+
+            isPriceSort = !isPriceSort;
+            initialFilms();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if(isRatingSort)
+            {
+                this.films = SortByRating(this.films);
+            }
+            else
+            {
+                this.films = SortByRatingDESC(this.films);
+            }
+
+            isRatingSort = !isRatingSort;
+            initialFilms();
+        }
+
+        private List<Film> SortByRating(List<Film> films)
+        {
+            var filmsArray = films.ToArray();
+            var left = 0;
+            var right = filmsArray.Length - 1;
+            while (left < right)
+            {
+                var min = left;
+                for (var i = left + 1; i <= right; i++)
+                {
+                    if (filmsArray[i].Rating < filmsArray[min].Rating)
+                    {
+                        min = i;
+                    }
+                }
+
+                var temp = filmsArray[min];
+                filmsArray[min] = filmsArray[left];
+                filmsArray[left] = temp;
+                left++;
+            }
+
+            return filmsArray.ToList();
+        }
+
+        private List<Film> SortByRatingDESC(List<Film> films)
+        {
+            var filmsArray = films.ToArray();
+            var left = 0;
+            var right = filmsArray.Length - 1;
+            while (left < right)
+            {
+                var min = left;
+                for (var i = left + 1; i <= right; i++)
+                {
+                    if (filmsArray[i].Rating > filmsArray[min].Rating)
+                    {
+                        min = i;
+                    }
+                }
+
+                var temp = filmsArray[min];
+                filmsArray[min] = filmsArray[left];
+                filmsArray[left] = temp;
+                left++;
+            }
+
+            return filmsArray.ToList();
         }
     }
 }
