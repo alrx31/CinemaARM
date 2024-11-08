@@ -222,7 +222,7 @@ namespace cinemaARM
             editFilms.ShowDialog();
         }
 
-        private List<Film> SortByPrice(List<Film> films)
+        private List<Film> SortByPriceDESC(List<Film> films)
         {
             var filmsArray = films.ToArray();
 
