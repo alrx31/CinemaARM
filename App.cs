@@ -245,24 +245,31 @@ namespace cinemaARM
 
         private List<Film> SortByPriceDESC(List<Film> films)
         {
-            var filmsArray = films.ToArray();
+            if (films.Count <= 1)
+                return films;
 
-            for (var i = 1; i < filmsArray.Length; i++)
+            var pivot = films[films.Count / 2]; // Опорный элемент
+            var left = new List<Film>();        // Элементы больше опорного
+            var right = new List<Film>();       // Элементы меньше опорного
+            var middle = new List<Film>();      // Элементы равные опорному
+
+            foreach (var film in films)
             {
-                var currentFilm = filmsArray[i];
-                var j = i - 1;
-
-                while (j >= 0 && filmsArray[j].Price < currentFilm.Price)
-                {
-                    filmsArray[j + 1] = filmsArray[j];
-                    j--;
-                }
-
-                filmsArray[j + 1] = currentFilm;
+                if (film.Price > pivot.Price)
+                    left.Add(film);             // В левую часть помещаем фильмы с ценой больше опорного
+                else if (film.Price < pivot.Price)
+                    right.Add(film);            // В правую часть помещаем фильмы с ценой меньше опорного
+                else
+                    middle.Add(film);           // В середину помещаем фильмы с ценой равной опорному
             }
 
-            return filmsArray.ToList();
+            // Рекурсивная сортировка левой и правой частей и объединение всех элементов
+            return SortByPriceDESC(left)
+                .Concat(middle)
+                .Concat(SortByPriceDESC(right))
+                .ToList();
         }
+
 
 
         private void button5_Click(object sender, EventArgs e)
