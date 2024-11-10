@@ -248,22 +248,21 @@ namespace cinemaARM
             if (films.Count <= 1)
                 return films;
 
-            var pivot = films[films.Count / 2]; // Опорный элемент
-            var left = new List<Film>();        // Элементы больше опорного
-            var right = new List<Film>();       // Элементы меньше опорного
-            var middle = new List<Film>();      // Элементы равные опорному
+            var pivot = films[films.Count / 2]; 
+            var left = new List<Film>();        
+            var right = new List<Film>();       
+            var middle = new List<Film>();      
 
             foreach (var film in films)
             {
                 if (film.Price > pivot.Price)
-                    left.Add(film);             // В левую часть помещаем фильмы с ценой больше опорного
+                    left.Add(film);             
                 else if (film.Price < pivot.Price)
-                    right.Add(film);            // В правую часть помещаем фильмы с ценой меньше опорного
+                    right.Add(film);            
                 else
-                    middle.Add(film);           // В середину помещаем фильмы с ценой равной опорному
+                    middle.Add(film);           
             }
-
-            // Рекурсивная сортировка левой и правой частей и объединение всех элементов
+            
             return SortByPriceDESC(left)
                 .Concat(middle)
                 .Concat(SortByPriceDESC(right))
