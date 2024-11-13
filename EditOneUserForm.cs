@@ -33,13 +33,45 @@ namespace cinemaARM
             // delete user
             var json = File.ReadAllText(ENV.DataFolder + "users.json");
             var users = JsonSerializer.Deserialize<List<Person>>(json);
-            
+
             var user = users.FirstOrDefault(x => x.Login == _userLogin);
+
+            var messageResult = MessageBox.Show("Вы уверены");
+            if (messageResult != DialogResult.OK)
+            {
+                return;
+            }
+
             users.Remove(user);
-            
+
             File.WriteAllText(ENV.DataFolder + "users.json", JsonSerializer.Serialize(users));
             MessageBox.Show("User deleted");
-            
+
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // change the is admin field
+            var json = File.ReadAllText(ENV.DataFolder+"users.json");
+            var users = JsonSerializer.Deserialize<List<Person>>(json);
+
+            var user = users.FirstOrDefault(x => x.Login == _userLogin);
+
+            var messageResult = MessageBox.Show("Вы уверены");
+            if (messageResult != DialogResult.OK)
+            {
+                return;
+            }
+
+            user.IsAdmin = true;
+
+            users.Remove(user);
+            users.Add(user);
+
+            File.WriteAllText(ENV.DataFolder + "users.json", JsonSerializer.Serialize(users));
+            MessageBox.Show("User deleted");
+
             this.Close();
         }
     }
