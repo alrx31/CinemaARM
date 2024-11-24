@@ -98,7 +98,7 @@ namespace cinemaARM
             this.Close();
         }
 
-        private void RemoveServe()
+        private void RemoveServe(object sender, EventArgs e)
         {
             var name = textBox1.Text;
             int seatNumber;

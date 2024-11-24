@@ -142,15 +142,25 @@ namespace cinemaARM
                 }
 
 
-                panel.Click += (s, e) =>
+                EventHandler action = (object sender, EventArgs e) =>
                 {
-                    var form = new ChangeFilmForm(f.Name);
+                    var form = new AddServeForm(f.Name);
                     form.ShowDialog();
                     update();
                 };
 
-
-
+                panel.Click += action;
+                label10.Click += action;
+                label9.Click += action;
+                label8.Click += action;
+                label7.Click += action;
+                label6.Click += action;
+                label5.Click += action;
+                label4.Click += action;
+                label3.Click += action;
+                label2.Click += action;
+                label.Click += action;
+                innerFlowPanel.Click += action;
 
                 panel.Controls.Add(innerFlowPanel);
                 flowLayoutPanel1.Controls.Add(panel);
