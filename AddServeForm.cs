@@ -97,5 +97,76 @@ namespace cinemaARM
 
             this.Close();
         }
+
+        private void RemoveServe()
+        {
+            var name = textBox1.Text;
+            int seatNumber;
+
+            if (name == "")
+            {
+                label3.Text = "Введите имя";
+                label3.Visible = true;
+                return;
+            }
+
+            try
+            {
+                seatNumber = int.Parse(textBox2.Text);
+            }
+            catch (Exception ex)
+            {
+                label3.Text = "Номер места должен быть числом";
+                label3.Visible = true;
+                return;
+            }
+
+            if (seatNumber < 1 || seatNumber > ENV.CountSeatsInCinema)
+            {
+                label3.Text = "Номер места должен быть от 1 до " + ENV.CountSeatsInCinema;
+                label3.Visible = true;
+                return;
+            }
+
+            var serve = new ServeModel
+            {
+                Name = name,
+                SeatNumber = seatNumber
+            };
+
+            var json = File.ReadAllText(ENV.DataFolder + "films.json");
+
+            var films = JsonSerializer.Deserialize<List<Film>>(json);
+
+            var film = films.First(f => f.Name == _filmName);
+
+            if (film == null)
+            {
+                MessageBox.Show("Фильм не найден");
+                return;
+            }
+
+            if (film.Servos == null)
+            {
+                film.Servos = new List<ServeModel>();
+            }
+            
+            if(!film.Servos.Any(s => s.SeatNumber == seatNumber))
+            {
+                label3.Text = "Место еще не занято";
+                label3.Visible = true;
+                return;
+            }
+
+            film.Servos.Remove(serve);
+
+            json = JsonSerializer.Serialize(films);
+
+            File.WriteAllText(ENV.DataFolder + "films.json", json);
+
+            MessageBox.Show("Бронь успешно снята");
+
+            this.Close();
+        }
     }
 }
