@@ -39,17 +39,19 @@
             flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.BackColor = SystemColors.ButtonFace;
             flowLayoutPanel1.Font = new Font("Segoe UI", 14F);
-            flowLayoutPanel1.Location = new Point(22, 23);
+            flowLayoutPanel1.Location = new Point(25, 31);
+            flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(850, 497);
+            flowLayoutPanel1.Size = new Size(971, 663);
             flowLayoutPanel1.TabIndex = 1;
             // 
             // button1
             // 
             button1.Font = new Font("Segoe UI", 16F);
-            button1.Location = new Point(891, 23);
+            button1.Location = new Point(1018, 31);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(200, 50);
+            button1.Size = new Size(229, 67);
             button1.TabIndex = 2;
             button1.Text = "Выйти";
             button1.UseVisualStyleBackColor = true;
@@ -58,20 +60,22 @@
             // button2
             // 
             button2.Font = new Font("Segoe UI", 16F);
-            button2.Location = new Point(891, 470);
+            button2.Location = new Point(1018, 627);
+            button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
-            button2.Size = new Size(200, 50);
+            button2.Size = new Size(229, 67);
             button2.TabIndex = 3;
-            button2.Text = "Добавить Фильм";
+            button2.Text = "Добавить";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
             // button3
             // 
             button3.Font = new Font("Segoe UI", 16F);
-            button3.Location = new Point(891, 94);
+            button3.Location = new Point(1018, 125);
+            button3.Margin = new Padding(3, 4, 3, 4);
             button3.Name = "button3";
-            button3.Size = new Size(200, 50);
+            button3.Size = new Size(229, 67);
             button3.TabIndex = 4;
             button3.Text = "Обновить";
             button3.UseVisualStyleBackColor = true;
@@ -79,15 +83,16 @@
             // 
             // EditFilmsForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(1184, 611);
+            ClientSize = new Size(1353, 815);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "EditFilmsForm";
             Text = "Редактировать фильмы";
             ResumeLayout(false);
