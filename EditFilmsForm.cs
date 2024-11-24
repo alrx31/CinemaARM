@@ -138,12 +138,7 @@ namespace cinemaARM
                     label11.AutoSize = true;
                     innerFlowPanel.Controls.Add(label11);
 
-                    panel.Click += (s, e) =>
-                    {
-                        var form = new AddServeForm(f.Name);
-                        form.ShowDialog();
-                        update();
-                    };
+                    
                 }
 
 
