@@ -50,11 +50,23 @@ namespace cinemaARM
                 return;
             }
 
+            var res = AddServe(seatNumber, name);
+            
+            if (!res) return;
+            
+            MessageBox.Show("Место успешно добавлено");
+
+            this.Close();
+        }
+
+        public bool AddServe(
+            int seatNumber, string name)
+        {
             if (seatNumber < 1 || seatNumber > ENV.CountSeatsInCinema)
             {
                 label3.Text = "Номер места должен быть от 1 до " + ENV.CountSeatsInCinema;
                 label3.Visible = true;
-                return;
+                return false;
             }
 
             var serve = new ServeModel
@@ -72,7 +84,7 @@ namespace cinemaARM
             if (film == null)
             {
                 MessageBox.Show("Фильм не найден");
-                return;
+                return false;
             }
 
             if (film.Servos == null)
@@ -84,7 +96,7 @@ namespace cinemaARM
             {
                 label3.Text = "Место уже занято";
                 label3.Visible = true;
-                return;
+                return false;
             }
 
             film.Servos.Add(serve);
@@ -93,11 +105,9 @@ namespace cinemaARM
 
             File.WriteAllText(ENV.DataFolder + "films.json", json);
 
-            MessageBox.Show("Место успешно добавлено");
-
-            this.Close();
+            return true;
         }
-
+        
         private void RemoveServe(object sender, EventArgs e)
         {
             var name = textBox1.Text;
@@ -121,11 +131,23 @@ namespace cinemaARM
                 return;
             }
 
+            var res = Remove_Serve(seatNumber, name);
+            
+            if (!res) return;
+            
+            MessageBox.Show("Бронь успешно снята");
+
+            this.Close();
+        }
+
+        public bool Remove_Serve(
+            int seatNumber, string name)
+        {
             if (seatNumber < 1 || seatNumber > ENV.CountSeatsInCinema)
             {
                 label3.Text = "Номер места должен быть от 1 до " + ENV.CountSeatsInCinema;
                 label3.Visible = true;
-                return;
+                return false;
             }
 
             var serve = new ServeModel
@@ -143,7 +165,7 @@ namespace cinemaARM
             if (film == null)
             {
                 MessageBox.Show("Фильм не найден");
-                return;
+                return false;
             }
 
             if (film.Servos == null)
@@ -155,7 +177,7 @@ namespace cinemaARM
             {
                 label3.Text = "Место еще не занято";
                 label3.Visible = true;
-                return;
+                return false;
             }
 
             film.Servos.Remove(serve);
@@ -164,9 +186,7 @@ namespace cinemaARM
 
             File.WriteAllText(ENV.DataFolder + "films.json", json);
 
-            MessageBox.Show("Бронь успешно снята");
-
-            this.Close();
+            return true;
         }
     }
 }

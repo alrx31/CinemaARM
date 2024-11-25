@@ -31,6 +31,18 @@ namespace cinemaARM
         private void button2_Click(object sender, EventArgs e)
         {
             // delete user
+            
+            var res = Delete_User();
+            
+            if (!res) return;
+            
+            MessageBox.Show("User deleted");
+
+            this.Close();
+        }
+
+        public bool Delete_User()
+        {
             var json = File.ReadAllText(ENV.DataFolder + "users.json");
             var users = JsonSerializer.Deserialize<List<Person>>(json);
 
@@ -39,20 +51,30 @@ namespace cinemaARM
             var messageResult = MessageBox.Show("Вы уверены");
             if (messageResult != DialogResult.OK)
             {
-                return;
+                return false;
             }
 
             users.Remove(user);
 
             File.WriteAllText(ENV.DataFolder + "users.json", JsonSerializer.Serialize(users));
-            MessageBox.Show("User deleted");
 
-            this.Close();
+            return true;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             // change the is admin field
+            var res = Change_IsAdmin();
+            
+            if (!res) return;
+            
+            MessageBox.Show("User deleted");
+
+            this.Close();
+        }
+
+        public bool Change_IsAdmin()
+        {
             var json = File.ReadAllText(ENV.DataFolder+"users.json");
             var users = JsonSerializer.Deserialize<List<Person>>(json);
 
@@ -61,7 +83,7 @@ namespace cinemaARM
             var messageResult = MessageBox.Show("Вы уверены");
             if (messageResult != DialogResult.OK)
             {
-                return;
+                return false;
             }
 
             user.IsAdmin = true;
@@ -70,9 +92,8 @@ namespace cinemaARM
             users.Add(user);
 
             File.WriteAllText(ENV.DataFolder + "users.json", JsonSerializer.Serialize(users));
-            MessageBox.Show("User deleted");
 
-            this.Close();
+            return true;
         }
     }
 }

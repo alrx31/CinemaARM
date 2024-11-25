@@ -43,39 +43,51 @@ namespace cinemaARM
                 return;
             }
 
+            var res = AddFilm(name, description, genre, director, country, showDate, year, price, rating, minAge);
+
+            if (res) MessageBox.Show("Фильм добавлен");
+            else return;
+
+            this.Close();
+        }
+
+        public bool AddFilm(
+            string name, string description, string genre, string director, string country, DateTime showDate
+            ,int year, decimal price, decimal rating, int minAge)
+        {
             if (name == "" || description == "" || genre == "" || director == "" || country == "")
             {
                 label10.Text = "Не все поля заполнены";
                 label10.Visible = true;
-                return;
+                return false;
             }
 
             if (year < 1900 || year > 2025)
             {
                 label10.Text = "Год должен быть в диапазоне от 1900 до 2025";
                 label10.Visible = true;
-                return;
+                return false;
             }
 
             if (price < 0)
             {
                 label10.Text = "Цена не может быть отрицательной";
                 label10.Visible = true;
-                return;
+                return false;
             }
 
             if (rating < 0 || rating > 10)
             {
                 label10.Text = "Рейтинг должен быть в диапазоне от 0 до 10";
                 label10.Visible = true;
-                return;
+                return false;
             }
 
             if (minAge < 0 || minAge > 18)
             {
                 label10.Text = "Возрастное ограничение должно быть в диапазоне от 0 до 18";
                 label10.Visible = true;
-                return;
+                return false;
             }
 
             if(showDate < DateTime.UtcNow)
@@ -109,9 +121,7 @@ namespace cinemaARM
 
             File.WriteAllText(ENV.DataFolder + "films.json", newJson);
 
-            MessageBox.Show("Фильм добавлен");
-
-            this.Close();
+            return true;
         }
     }
 }
