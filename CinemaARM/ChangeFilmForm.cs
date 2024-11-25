@@ -25,7 +25,7 @@ namespace cinemaARM
             Delete_Film();
         }
 
-        private bool Delete_Film()
+        public bool Delete_Film()
         {
             var json = File.ReadAllText(ENV.DataFolder + "films.json");
             var films = JsonSerializer.Deserialize<List<Film>>(json);
@@ -45,6 +45,7 @@ namespace cinemaARM
             else
             {
                 MessageBox.Show("Фильм не найден");
+                return false;
             }
 
             return true;
@@ -102,6 +103,7 @@ namespace cinemaARM
             else
             {
                 MessageBox.Show("Фильм не найден");
+                return false;
             }
 
             return true;

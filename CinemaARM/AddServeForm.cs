@@ -14,12 +14,12 @@ namespace cinemaARM
 {
     public partial class AddServeForm : Form
     {
-        private string _filmName;
+        public string fileName;
 
         public AddServeForm(string filmName)
         {
             InitializeComponent();
-            _filmName = filmName;
+            fileName = filmName;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -79,7 +79,7 @@ namespace cinemaARM
 
             var films = JsonSerializer.Deserialize<List<Film>>(json);
 
-            var film = films.First(f => f.Name == _filmName);
+            var film = films.First(f => f.Name == fileName);
 
             if (film == null)
             {
@@ -160,7 +160,9 @@ namespace cinemaARM
 
             var films = JsonSerializer.Deserialize<List<Film>>(json);
 
-            var film = films.First(f => f.Name == _filmName);
+            var film = films.First(f => f.Name == fileName);
+
+            films.Remove(film);
 
             if (film == null)
             {
@@ -181,6 +183,8 @@ namespace cinemaARM
             }
 
             film.Servos.Remove(serve);
+
+            films.Add(film);
 
             json = JsonSerializer.Serialize(films);
 
