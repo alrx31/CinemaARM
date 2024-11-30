@@ -144,7 +144,7 @@ namespace cinemaARM
 
                 EventHandler action = (object sender, EventArgs e) =>
                 {
-                    var form = new AddServeForm(f.Name);
+                    var form = new ChangeFilmForm(f.Name);
                     form.ShowDialog();
                     update();
                 };

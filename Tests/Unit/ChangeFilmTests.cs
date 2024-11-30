@@ -8,7 +8,7 @@ namespace Tests.Unit
 
         public ChangeFilmTests()
         {
-            _changeFilmForm = new ChangeFilmForm("Film");
+            _changeFilmForm = new ChangeFilmForm("Film1");
         }
 
         [Fact]
