@@ -46,13 +46,13 @@
             flowLayoutPanel1.Location = new Point(25, 31);
             flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1609, 1098);
+            flowLayoutPanel1.Size = new Size(1198, 662);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // button1
             // 
             button1.Font = new Font("Segoe UI", 16F);
-            button1.Location = new Point(1659, 31);
+            button1.Location = new Point(1241, 31);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
             button1.Size = new Size(229, 67);
@@ -64,7 +64,7 @@
             // button2
             // 
             button2.Font = new Font("Segoe UI", 16F);
-            button2.Location = new Point(1659, 124);
+            button2.Location = new Point(1241, 124);
             button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
             button2.Size = new Size(229, 67);
@@ -76,7 +76,7 @@
             // button3
             // 
             button3.Font = new Font("Segoe UI", 16F);
-            button3.Location = new Point(1659, 573);
+            button3.Location = new Point(1241, 573);
             button3.Margin = new Padding(3, 4, 3, 4);
             button3.Name = "button3";
             button3.Size = new Size(229, 120);
@@ -89,7 +89,7 @@
             // button4
             // 
             button4.Font = new Font("Segoe UI", 16F);
-            button4.Location = new Point(1659, 431);
+            button4.Location = new Point(1241, 431);
             button4.Margin = new Padding(3, 4, 3, 4);
             button4.Name = "button4";
             button4.Size = new Size(229, 120);
@@ -102,7 +102,7 @@
             // button5
             // 
             button5.Font = new Font("Segoe UI", 16F);
-            button5.Location = new Point(253, 1149);
+            button5.Location = new Point(253, 739);
             button5.Margin = new Padding(3, 4, 3, 4);
             button5.Name = "button5";
             button5.Size = new Size(229, 67);
@@ -114,7 +114,7 @@
             // button6
             // 
             button6.Font = new Font("Segoe UI", 16F);
-            button6.Location = new Point(508, 1149);
+            button6.Location = new Point(508, 739);
             button6.Margin = new Padding(3, 4, 3, 4);
             button6.Name = "button6";
             button6.Size = new Size(229, 67);
@@ -127,7 +127,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16F);
-            label1.Location = new Point(25, 1164);
+            label1.Location = new Point(25, 754);
             label1.Name = "label1";
             label1.Size = new Size(211, 37);
             label1.TabIndex = 7;
@@ -138,7 +138,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(1959, 1244);
+            ClientSize = new Size(1482, 853);
             Controls.Add(label1);
             Controls.Add(button6);
             Controls.Add(button5);
