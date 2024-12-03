@@ -12,6 +12,7 @@ namespace cinemaARM
         private bool isPriceSort = false;
         private bool isRatingSort = false;
         private List<Film> films;
+        private List<Film> filteredList;
 
         public App()
         {
@@ -45,9 +46,10 @@ namespace cinemaARM
 
         public void update()
         {
-            var films = getAllMovies();
-            this.films = films;
-            initialFilms();
+            var filteredList = getAllMovies();
+            this.films = filteredList;
+            this.filteredList = filteredList;
+            initialfilteredList();
         }
 
 
@@ -56,17 +58,17 @@ namespace cinemaARM
         {
             var json = File.ReadAllText(ENV.DataFolder + "films.json");
 
-            var films = JsonSerializer.Deserialize<List<Film>>(json);
+            var filteredList = JsonSerializer.Deserialize<List<Film>>(json);
 
-            return films;
+            return filteredList;
         }
 
 
-        public void initialFilms()
+        public void initialfilteredList()
         {
             flowLayoutPanel1.Controls.Clear();
 
-            foreach (var f in films)
+            foreach (var f in filteredList)
             {
                 var panel = new Panel();
 
@@ -169,7 +171,7 @@ namespace cinemaARM
                     label11.AutoSize = true;
                     innerFlowPanel.Controls.Add(label11);
 
-                    EventHandler action = (object sender,EventArgs e) =>
+                    EventHandler action = (object sender, EventArgs e) =>
                     {
                         var form = new AddServeForm(f.Name);
                         form.ShowDialog();
@@ -233,51 +235,51 @@ namespace cinemaARM
                 return;
             }
 
-            var editFilms = new EditFilmsForm();
-            editFilms.ShowDialog();
+            var editfilteredList = new EditFilmsForm();
+            editfilteredList.ShowDialog();
         }
 
-        private List<Film> SortByPrice(List<Film> films)
+        private List<Film> SortByPrice(List<Film> filteredList)
         {
-            var filmsArray = films.ToArray();
+            var filteredListArray = filteredList.ToArray();
 
-            for (var i = 1; i < filmsArray.Length; i++)
+            for (var i = 1; i < filteredListArray.Length; i++)
             {
-                var currentFilm = filmsArray[i];
+                var currentFilm = filteredListArray[i];
                 var j = i - 1;
 
-                while (j >= 0 && filmsArray[j].Price > currentFilm.Price)
+                while (j >= 0 && filteredListArray[j].Price > currentFilm.Price)
                 {
-                    filmsArray[j + 1] = filmsArray[j];
+                    filteredListArray[j + 1] = filteredListArray[j];
                     j--;
                 }
 
-                filmsArray[j + 1] = currentFilm;
+                filteredListArray[j + 1] = currentFilm;
             }
 
-            return filmsArray.ToList();
+            return filteredListArray.ToList();
         }
 
-        private List<Film> SortByPriceDESC(List<Film> films)
+        private List<Film> SortByPriceDESC(List<Film> filteredList)
         {
-            if (films.Count <= 1)
-                return films;
+            if (filteredList.Count <= 1)
+                return filteredList;
 
-            var pivot = films[films.Count / 2]; 
-            var left = new List<Film>();        
-            var right = new List<Film>();       
-            var middle = new List<Film>();      
+            var pivot = filteredList[filteredList.Count / 2];
+            var left = new List<Film>();
+            var right = new List<Film>();
+            var middle = new List<Film>();
 
-            foreach (var film in films)
+            foreach (var film in filteredList)
             {
                 if (film.Price > pivot.Price)
-                    left.Add(film);             
+                    left.Add(film);
                 else if (film.Price < pivot.Price)
-                    right.Add(film);            
+                    right.Add(film);
                 else
-                    middle.Add(film);           
+                    middle.Add(film);
             }
-            
+
             return SortByPriceDESC(left)
                 .Concat(middle)
                 .Concat(SortByPriceDESC(right))
@@ -290,80 +292,88 @@ namespace cinemaARM
         {
             if (isPriceSort)
             {
-                this.films = SortByPrice(this.films);
+                this.filteredList = SortByPrice(this.filteredList);
             }
             else
             {
-                this.films = SortByPriceDESC(this.films);
+                this.filteredList = SortByPriceDESC(this.filteredList);
             }
 
             isPriceSort = !isPriceSort;
-            initialFilms();
+            initialfilteredList();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            if(isRatingSort)
+            if (isRatingSort)
             {
-                this.films = SortByRating(this.films);
+                this.filteredList = SortByRating(this.filteredList);
             }
             else
             {
-                this.films = SortByRatingDESC(this.films);
+                this.filteredList = SortByRatingDESC(this.filteredList);
             }
 
             isRatingSort = !isRatingSort;
-            initialFilms();
+            initialfilteredList();
         }
 
-        private List<Film> SortByRating(List<Film> films)
+        private List<Film> SortByRating(List<Film> filteredList)
         {
-            var filmsArray = films.ToArray();
+            var filteredListArray = filteredList.ToArray();
             var left = 0;
-            var right = filmsArray.Length - 1;
+            var right = filteredListArray.Length - 1;
             while (left < right)
             {
                 var min = left;
                 for (var i = left + 1; i <= right; i++)
                 {
-                    if (filmsArray[i].Rating < filmsArray[min].Rating)
+                    if (filteredListArray[i].Rating < filteredListArray[min].Rating)
                     {
                         min = i;
                     }
                 }
 
-                var temp = filmsArray[min];
-                filmsArray[min] = filmsArray[left];
-                filmsArray[left] = temp;
+                var temp = filteredListArray[min];
+                filteredListArray[min] = filteredListArray[left];
+                filteredListArray[left] = temp;
                 left++;
             }
 
-            return filmsArray.ToList();
+            return filteredListArray.ToList();
         }
 
-        private List<Film> SortByRatingDESC(List<Film> films)
+        private List<Film> SortByRatingDESC(List<Film> filteredList)
         {
-            var filmsArray = films.ToArray();
+            var filteredListArray = filteredList.ToArray();
             var left = 0;
-            var right = filmsArray.Length - 1;
+            var right = filteredListArray.Length - 1;
             while (left < right)
             {
                 var min = left;
                 for (var i = left + 1; i <= right; i++)
                 {
-                    if (filmsArray[i].Rating > filmsArray[min].Rating)
+                    if (filteredListArray[i].Rating > filteredListArray[min].Rating)
                     {
                         min = i;
                     }
                 }
 
-                var temp = filmsArray[min];
-                filmsArray[min] = filmsArray[left];
-                filmsArray[left] = temp;
+                var temp = filteredListArray[min];
+                filteredListArray[min] = filteredListArray[left];
+                filteredListArray[left] = temp;
                 left++;
             }
 
-            return filmsArray.ToList();
+            return filteredListArray.ToList();
+        }
+
+        private void filter_TextChanged(object sender, EventArgs e)
+        {
+            var value = filter.Text;
+
+            this.filteredList= films.Where(l=>l.Name.Contains(value) || l.ShowDate.ToString().Contains(value)).ToList();
+            initialfilteredList();
         }
     }
 }

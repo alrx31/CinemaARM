@@ -36,6 +36,7 @@
             button5 = new Button();
             button6 = new Button();
             label1 = new Label();
+            filter = new TextBox();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -133,12 +134,23 @@
             label1.TabIndex = 7;
             label1.Text = "Сортировка по:";
             // 
+            // filter
+            // 
+            filter.Font = new Font("Segoe UI", 16F);
+            filter.Location = new Point(768, 748);
+            filter.Name = "filter";
+            filter.PlaceholderText = "фильтрация";
+            filter.Size = new Size(455, 43);
+            filter.TabIndex = 8;
+            filter.TextChanged += filter_TextChanged;
+            // 
             // App
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1482, 853);
+            Controls.Add(filter);
             Controls.Add(label1);
             Controls.Add(button6);
             Controls.Add(button5);
@@ -167,5 +179,6 @@
         private Button button5;
         private Button button6;
         private Label label1;
+        private TextBox filter;
     }
 }
