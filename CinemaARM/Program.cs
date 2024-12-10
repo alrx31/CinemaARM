@@ -15,6 +15,7 @@ namespace cinemaARM
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
+            // создание базового пользователя
             var adminModel = new Person
             {
                 Id = 1,
@@ -25,10 +26,11 @@ namespace cinemaARM
                 Password = ENV.getHash(ENV.AdminPassword)
             };
 
-            
+            // чтение всех пользователей
             string json = File.ReadAllText(ENV.DataFolder + "users.json");
             var users = JsonSerializer.Deserialize<List<Person>>(json);
 
+            // добавление базового пользователя если нет пользователей
             if(users.Count == 0)
             {
                 users.Add(adminModel);

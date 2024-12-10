@@ -23,6 +23,7 @@ namespace cinemaARM
 
         private void App_Load(object sender, EventArgs e)
         {
+            // авто логин при запуске
             var loginForm = new LoginForm(ref _ruleLevel, ref person);
             loginForm.Login(ref _ruleLevel, ref person);
 
@@ -46,6 +47,7 @@ namespace cinemaARM
 
         public void update()
         {
+            // обновление данных о фильмах
             var filteredList = getAllMovies();
             this.films = filteredList;
             this.filteredList = filteredList;
@@ -56,6 +58,7 @@ namespace cinemaARM
 
         public List<Film> getAllMovies()
         {
+            // получение данных о фильмах
             var json = File.ReadAllText(ENV.DataFolder + "films.json");
 
             var filteredList = JsonSerializer.Deserialize<List<Film>>(json);
@@ -66,6 +69,7 @@ namespace cinemaARM
 
         public void initialfilteredList()
         {
+            // отображение фильмов
             flowLayoutPanel1.Controls.Clear();
 
             foreach (var f in filteredList)
@@ -215,14 +219,16 @@ namespace cinemaARM
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            
+            
 
             if (_ruleLevel != 2)
             {
                 MessageBox.Show("У вас нет прав на это действие");
                 return;
             }
-
+            
+            // редактирование пользователей
             var editUserForm = new EditUsersForm(person.Login);
             editUserForm.ShowDialog();
         }
@@ -235,12 +241,14 @@ namespace cinemaARM
                 return;
             }
 
+            // редактирование фильмов
             var editfilteredList = new EditFilmsForm();
             editfilteredList.ShowDialog();
         }
 
         private List<Film> SortByPrice(List<Film> filteredList)
         {
+            // сортировка по цене по возрастанию, вставками
             var filteredListArray = filteredList.ToArray();
 
             for (var i = 1; i < filteredListArray.Length; i++)
@@ -262,6 +270,7 @@ namespace cinemaARM
 
         private List<Film> SortByPriceDESC(List<Film> filteredList)
         {
+            // сортировка по цене по убыванию, быстрая
             if (filteredList.Count <= 1)
                 return filteredList;
 
@@ -290,6 +299,7 @@ namespace cinemaARM
 
         private void button5_Click(object sender, EventArgs e)
         {
+            // выбор сортировки по цене
             if (isPriceSort)
             {
                 this.filteredList = SortByPrice(this.filteredList);
@@ -305,6 +315,7 @@ namespace cinemaARM
 
         private void button6_Click(object sender, EventArgs e)
         {
+            // выбор сортировки по рейтингу
             if (isRatingSort)
             {
                 this.filteredList = SortByRating(this.filteredList);
@@ -320,6 +331,7 @@ namespace cinemaARM
 
         private List<Film> SortByRating(List<Film> filteredList)
         {
+            // сортировка по рейтингу по возрастанию, выбором
             var filteredListArray = filteredList.ToArray();
             var left = 0;
             var right = filteredListArray.Length - 1;
@@ -345,6 +357,7 @@ namespace cinemaARM
 
         private List<Film> SortByRatingDESC(List<Film> filteredList)
         {
+            // сортировка по рейтингу по убыванию, выбором
             var filteredListArray = filteredList.ToArray();
             var left = 0;
             var right = filteredListArray.Length - 1;
@@ -370,6 +383,7 @@ namespace cinemaARM
 
         private void filter_TextChanged(object sender, EventArgs e)
         {
+            // фильтрация по названию или дате
             var value = filter.Text;
 
             this.filteredList= films.Where(l=>l.Name.Contains(value) || l.ShowDate.ToString().Contains(value)).ToList();

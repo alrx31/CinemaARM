@@ -1,5 +1,6 @@
 ﻿namespace cinemaARM.Models
 {
+    // фильм / сеанс
     public class Film
     {
         public int Id { get; set; }

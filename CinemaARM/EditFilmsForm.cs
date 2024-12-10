@@ -13,6 +13,7 @@ namespace cinemaARM
 
         public void update()
         {
+            // получение всех фильмов
             var films = getAllMovies();
 
             initialFilms(films);
@@ -22,6 +23,7 @@ namespace cinemaARM
 
         public List<Film> getAllMovies()
         {
+            // чтение всех фильмов из файла
             var json = File.ReadAllText(ENV.DataFolder + "films.json");
 
             var films = JsonSerializer.Deserialize<List<Film>>(json);
@@ -32,7 +34,7 @@ namespace cinemaARM
 
         public void initialFilms(List<Film> films)
         {
-
+            //  отображение фильмов
             flowLayoutPanel1.Controls.Clear();
 
             foreach (var f in films)
@@ -176,6 +178,7 @@ namespace cinemaARM
 
         private void button2_Click(object sender, EventArgs e)
         {
+            // форма добавление фильма
             var addFilmForm = new AddFilmForm();
             addFilmForm.ShowDialog();
             update();

@@ -29,9 +29,11 @@ namespace cinemaARM
 
         private void Add_Serve(object sender, EventArgs e)
         {
+            // получение данных из формы
             var name = textBox1.Text;
             int seatNumber;
 
+            // проверка ввода числовых данных
             if (name == "")
             {
                 label3.Text = "Введите имя";
@@ -49,7 +51,7 @@ namespace cinemaARM
                 label3.Visible = true;
                 return;
             }
-
+            // добавление брони
             var res = AddServe(seatNumber, name);
             
             if (!res) return;
@@ -62,23 +64,27 @@ namespace cinemaARM
         public bool AddServe(
             int seatNumber, string name)
         {
+            // проверка ввода
             if (seatNumber < 1 || seatNumber > ENV.CountSeatsInCinema)
             {
                 label3.Text = "Номер места должен быть от 1 до " + ENV.CountSeatsInCinema;
                 label3.Visible = true;
                 return false;
             }
-
+            
+            // создание брони
             var serve = new ServeModel
             {
                 Name = name,
                 SeatNumber = seatNumber
             };
 
+            // получение данных о фильмах
             var json = File.ReadAllText(ENV.DataFolder + "films.json");
 
             var films = JsonSerializer.Deserialize<List<Film>>(json);
 
+            // поиск нужного фильма
             var film = films.First(f => f.Name == fileName);
 
             if (film == null)
@@ -91,16 +97,18 @@ namespace cinemaARM
             {
                 film.Servos = new List<ServeModel>();
             }
-
+            
+            // проверка на занятость места
+            
             if(film.Servos.Any(s => s.SeatNumber == seatNumber))
             {
                 label3.Text = "Место уже занято";
                 label3.Visible = true;
                 return false;
             }
-
+            // добавление брони
             film.Servos.Add(serve);
-
+            // сохранение изменений в файл
             json = JsonSerializer.Serialize(films);
 
             File.WriteAllText(ENV.DataFolder + "films.json", json);

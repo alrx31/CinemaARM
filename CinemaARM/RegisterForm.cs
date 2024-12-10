@@ -14,6 +14,7 @@ namespace cinemaARM
 
         private void Register_event(object sender, EventArgs e)
         {
+            // получение данных из формы
             var name = textBox1.Text;
             var surname = textBox2.Text;
             var login = textBox3.Text;
@@ -21,6 +22,7 @@ namespace cinemaARM
             var isAdmin = checkBox1.Checked;
             var ReapetPassword = textBox5.Text;
 
+            // проверка ввода
             if(name == "" || surname == "" || login == "" || password == "" || ReapetPassword == "")
             {
                 label6.Text = "Заполните все поля";
@@ -28,7 +30,7 @@ namespace cinemaARM
                 return;
             }
 
-
+            // проверка совпадения паролей
             if (password != ReapetPassword)
             {
                 label6.Text = "Пароли не совпадают";
@@ -38,17 +40,18 @@ namespace cinemaARM
 
 
 
-
+            // чтение всех пользователей
             var json = File.ReadAllText(ENV.DataFolder + "users.json");
             var users = JsonSerializer.Deserialize<List<Person>>(json);
 
+            // проверка существования пользователя
             if (users.Any(x => x.Login == login))
             {
                 label6.Text = "Пользователь с таким логином уже существует";
                 label6.Visible = true;
                 return;
             }
-
+            // создание пользователя 
             var user = new Person
             {
                 Id = users.Count + 1,
@@ -61,6 +64,7 @@ namespace cinemaARM
 
             users.Add(user);
 
+            // сохранение изменений в файл
             json = JsonSerializer.Serialize(users);
 
             File.WriteAllText(ENV.DataFolder + "users.json", json);

@@ -11,6 +11,7 @@
         public static string AdminPassword = "admin";
 
 
+        // хеширование пароля
         public static string getHash(string password)
         {
             byte[] data = System.Text.Encoding.ASCII.GetBytes(password);

@@ -33,19 +33,23 @@ namespace cinemaARM
 
         public bool Delete_User()
         {
+            // получение всех пользователей
             var json = File.ReadAllText(ENV.DataFolder + "users.json");
             var users = JsonSerializer.Deserialize<List<Person>>(json);
 
+            // поиск пользователя
             var user = users.FirstOrDefault(x => x.Login == _userLogin);
 
             var messageResult = MessageBox.Show("Вы уверены");
+            // подтверждение удаления
             if (messageResult != DialogResult.OK)
             {
                 return false;
             }
 
+            // удаление пользователя
             users.Remove(user);
-
+            // сохранение изменений в файл
             File.WriteAllText(ENV.DataFolder + "users.json", JsonSerializer.Serialize(users));
 
             return true;
@@ -65,22 +69,28 @@ namespace cinemaARM
 
         public bool Change_IsAdmin()
         {
+            // получение всех пользователей
             var json = File.ReadAllText(ENV.DataFolder+"users.json");
             var users = JsonSerializer.Deserialize<List<Person>>(json);
-
+            
+            // поиск пользователя
             var user = users.FirstOrDefault(x => x.Login == _userLogin);
-
+            
             var messageResult = MessageBox.Show("Вы уверены");
+            // подтверждение изменения
             if (messageResult != DialogResult.OK)
             {
                 return false;
             }
 
+            // изменение поля isAdmin
             user.IsAdmin = true;
 
+            // перезапись пользователя
             users.Remove(user);
             users.Add(user);
 
+            // сохранение изменений в файл
             File.WriteAllText(ENV.DataFolder + "users.json", JsonSerializer.Serialize(users));
 
             return true;

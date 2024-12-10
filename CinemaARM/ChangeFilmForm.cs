@@ -27,15 +27,21 @@ namespace cinemaARM
 
         public bool Delete_Film()
         {
+            // чтение всех фильмов
             var json = File.ReadAllText(ENV.DataFolder + "films.json");
             var films = JsonSerializer.Deserialize<List<Film>>(json);
 
+            // поиск фильма
             var film = films.FirstOrDefault(f => f.Name == _filmName);
 
+            
             if (film != null)
             {
+                // удаление фильма
+                
                 films.Remove(film);
 
+                // сохранение изменений в файл
                 var newJson = JsonSerializer.Serialize(films);
 
                 File.WriteAllText(ENV.DataFolder + "films.json", newJson);
@@ -53,33 +59,40 @@ namespace cinemaARM
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // delete serves
             CrearFilm();
         }
 
         public bool CrearFilm()
         {
+            // чтение всех фильмов
             var json = File.ReadAllText(ENV.DataFolder + "films.json");
 
             var films = JsonSerializer.Deserialize<List<Film>>(json);
 
+            // поиск фильма
             var film = films.FirstOrDefault(f => f.Name == _filmName);
 
             if (film != null)
             {
+                // удаление броней
                 decimal earnMoney = film.Price * film.Servos.Count;
 
                 film.Servos = new List<ServeModel>();
 
+                // сохранение изменений в файл
                 var newJson = JsonSerializer.Serialize(films);
 
                 File.WriteAllText(ENV.DataFolder + "films.json", newJson);
 
                 MessageBox.Show("Записи удалены, зароботок: " + earnMoney);
 
+                // получение всех выручек
                 var json2 = File.ReadAllText(ENV.DataFolder + "money.json");
 
                 var money = JsonSerializer.Deserialize<List<EarnFilm>>(json2);
 
+                // добавление выручки
                 if (money.Any(m => m.FilmName == _filmName))
                 {
                     var m = money.First(m => m.FilmName == _filmName);
@@ -94,6 +107,7 @@ namespace cinemaARM
                     });
                 }
 
+                // сохранение изменений в файл
                 var newJson2 = JsonSerializer.Serialize(money);
 
                 File.WriteAllText(ENV.DataFolder + "money.json", newJson2);

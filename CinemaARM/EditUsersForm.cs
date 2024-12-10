@@ -29,6 +29,7 @@ namespace cinemaARM
 
         public void update()
         {
+            // обновоение списка пользователей
             var users = getAllUsers();
 
             initialUsers(users);
@@ -36,6 +37,7 @@ namespace cinemaARM
 
         public List<Person> getAllUsers()
         {
+            // получение всех пользователей
             var json = File.ReadAllText(ENV.DataFolder + "users.json");
 
             var users = JsonSerializer.Deserialize<List<Person>>(json);
@@ -45,6 +47,7 @@ namespace cinemaARM
 
         public void initialUsers(List<Person> users)
         {
+            // отображение пользователей
 
             flowLayoutPanel1.Controls.Clear();
 
@@ -110,6 +113,7 @@ namespace cinemaARM
 
         private void button2_Click(object sender, EventArgs e)
         {
+            // форма добавление пользователя
             var regForm = new RegisterForm();
             regForm.ShowDialog();
             update();

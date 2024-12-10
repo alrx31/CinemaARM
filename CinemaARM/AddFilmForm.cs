@@ -17,6 +17,7 @@ namespace cinemaARM
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // получение данных из формы
             var name = textBox1.Text;
             var description = textBox2.Text;
             var genre = textBox3.Text;
@@ -29,6 +30,7 @@ namespace cinemaARM
             decimal rating;
             int minAge;
 
+            // проверка ввода числовых данных
             try
             {
                 year = int.Parse(textBox6.Text);
@@ -42,7 +44,7 @@ namespace cinemaARM
                 label10.Visible = true;
                 return;
             }
-
+            // добавление фильма
             var res = AddFilm(name, description, genre, director, country, showDate, year, price, rating, minAge);
 
             if (res) MessageBox.Show("Фильм добавлен");
@@ -55,6 +57,7 @@ namespace cinemaARM
             string name, string description, string genre, string director, string country, DateTime showDate
             ,int year, decimal price, decimal rating, int minAge)
         {
+            // проверка ввода
             if (name == "" || description == "" || genre == "" || director == "" || country == "")
             {
                 label10.Text = "Не все поля заполнены";
@@ -96,9 +99,11 @@ namespace cinemaARM
                 label10.Visible = true;
             }
 
+            //  получение всех фильмов
             var json = File.ReadAllText(ENV.DataFolder + "films.json");
             var films = JsonSerializer.Deserialize<List<Film>>(json);
-
+            
+            // добавление нового фильма
             var film = new Film()
             {
                 Id = films.Count + 1,
@@ -117,6 +122,7 @@ namespace cinemaARM
 
             films.Add(film);
 
+            // запись в файл
             var newJson = JsonSerializer.Serialize(films);
 
             File.WriteAllText(ENV.DataFolder + "films.json", newJson);

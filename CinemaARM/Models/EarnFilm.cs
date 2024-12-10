@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace cinemaARM.Models
 {
+    // Выручка
     public class EarnFilm
     {
         public string FilmName { get; set; }
