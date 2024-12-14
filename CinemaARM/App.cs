@@ -137,6 +137,8 @@ namespace cinemaARM
                 label7.Text = "Цена: " + f.Price.ToString();
                 label7.MaximumSize = new Size(1100, 0);
                 label7.AutoSize = true;
+                // bold
+                label7.Font = new Font("Arial", 14, FontStyle.Bold);
                 innerFlowPanel.Controls.Add(label7);
 
                 var label8 = new Label();
@@ -177,7 +179,7 @@ namespace cinemaARM
 
                     EventHandler action = (object sender, EventArgs e) =>
                     {
-                        var form = new AddServeForm(f.Name);
+                        var form = new AddServeForm(f.Name,person.Name);
                         form.ShowDialog();
                         update();
                     };

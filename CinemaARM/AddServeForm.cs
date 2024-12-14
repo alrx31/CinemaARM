@@ -15,11 +15,13 @@ namespace cinemaARM
     public partial class AddServeForm : Form
     {
         public string fileName;
+        public string managerName;
 
-        public AddServeForm(string filmName)
+        public AddServeForm(string filmName,string managerName)
         {
             InitializeComponent();
             fileName = filmName;
+            this.managerName = managerName;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -113,6 +115,36 @@ namespace cinemaARM
 
             File.WriteAllText(ENV.DataFolder + "films.json", json);
 
+            //Создание чека
+
+            var jsonCheque = File.ReadAllText(ENV.DataFolder + "cheques.json");
+            var cheques = JsonSerializer.Deserialize<List<Cheque>>(jsonCheque);
+
+            if (cheques == null)
+            {
+                cheques = new List<Cheque>();
+            }
+
+
+            var cheque = new Cheque
+            {
+                ChequeId = cheques.Count,
+                FilmName = film.Name,
+                DateTIme = DateTime.Now.ToString(),
+                Seat = seatNumber,
+                Price = film.Price,
+                ManagerName = managerName,
+                CinemaName = ENV.CinimaName,
+                IsReturned = false,
+                Name = name
+            };
+
+            cheques.Add(cheque);
+
+            jsonCheque = JsonSerializer.Serialize(cheques);
+
+            File.WriteAllText(ENV.DataFolder + "cheques.json", jsonCheque);
+
             return true;
         }
         
@@ -142,7 +174,7 @@ namespace cinemaARM
             var res = Remove_Serve(seatNumber, name);
             
             if (!res) return;
-            
+
             MessageBox.Show("Бронь успешно снята");
 
             this.Close();
@@ -157,12 +189,6 @@ namespace cinemaARM
                 label3.Visible = true;
                 return false;
             }
-
-            var serve = new ServeModel
-            {
-                Name = name,
-                SeatNumber = seatNumber
-            };
 
             var json = File.ReadAllText(ENV.DataFolder + "films.json");
 
@@ -190,6 +216,8 @@ namespace cinemaARM
                 return false;
             }
 
+            var serve = film.Servos.First(s => s.SeatNumber == seatNumber);
+
             film.Servos.Remove(serve);
 
             films.Add(film);
@@ -197,6 +225,23 @@ namespace cinemaARM
             json = JsonSerializer.Serialize(films);
 
             File.WriteAllText(ENV.DataFolder + "films.json", json);
+
+
+            var jsonCheque = File.ReadAllText(ENV.DataFolder + "cheques.json");
+
+            var cheques = JsonSerializer.Deserialize<List<Cheque>>(jsonCheque);
+
+            var cheque = cheques.First(
+                c => c.FilmName == film.Name && c.Seat == seatNumber && c.Name == name);
+
+            cheques.Remove(cheque);
+            cheque.IsReturned = true;
+
+            cheques.Add(cheque);
+
+            jsonCheque = JsonSerializer.Serialize(cheques);
+
+            File.WriteAllText(ENV.DataFolder + "cheques.json", jsonCheque);
 
             return true;
         }
